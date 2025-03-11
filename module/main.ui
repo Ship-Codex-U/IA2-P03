@@ -51,10 +51,7 @@ color: rgb(31, 31, 31);
       <property name="frameShadow">
        <enum>QFrame::Shadow::Raised</enum>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="4,2">
-       <item>
-        <layout class="QVBoxLayout" name="layout_graphic"/>
-       </item>
+      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,3">
        <item>
         <widget class="QFrame" name="frame_2">
          <property name="styleSheet">
@@ -66,7 +63,7 @@ color: rgb(31, 31, 31);
          <property name="frameShadow">
           <enum>QFrame::Shadow::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
+         <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QLabel" name="label">
             <property name="font">
@@ -76,211 +73,47 @@ color: rgb(31, 31, 31);
              </font>
             </property>
             <property name="text">
-             <string>Perceptrón</string>
+             <string>Adaline</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>5</number>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_10">
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Entrenamiento.</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
+           <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,1,1">
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_7">
-                <item>
-                 <widget class="QLabel" name="label_11">
-                  <property name="text">
-                   <string>Peso 1</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="output_weight_01">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(216, 216, 216);</string>
-                  </property>
-                  <property name="tabChangesFocus">
-                   <bool>true</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                  <property name="cursorWidth">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_8">
-                <item>
-                 <widget class="QLabel" name="label_12">
-                  <property name="text">
-                   <string>Peso 2</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="output_weight_02">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(216, 216, 216);</string>
-                  </property>
-                  <property name="tabChangesFocus">
-                   <bool>true</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                  <property name="cursorWidth">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_9">
-                <item>
-                 <widget class="QLabel" name="label_13">
-                  <property name="text">
-                   <string>Bias</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="output_bias">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(216, 216, 216);</string>
-                  </property>
-                  <property name="tabChangesFocus">
-                   <bool>true</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                  <property name="cursorWidth">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
-              <property name="bottomMargin">
-               <number>10</number>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <property name="rightMargin">
+               <number>15</number>
               </property>
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_12">
-                <item>
-                 <widget class="QLabel" name="label_14">
-                  <property name="text">
-                   <string>Taza Aprendizaje</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="input_alpha">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">				background-color: rgb(236, 243, 244);</string>
-                  </property>
-                  <property name="tabChangesFocus">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>Carga de Señales</string>
+                </property>
+               </widget>
               </item>
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_14">
-                <item>
-                 <widget class="QLabel" name="label_15">
-                  <property name="text">
-                   <string>Numero Iteraciones</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="input_iterations">
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_12">
                   <property name="maximumSize">
                    <size>
-                    <width>16777215</width>
-                    <height>25</height>
+                    <width>150</width>
+                    <height>16777215</height>
                    </size>
                   </property>
-                  <property name="styleSheet">
-                   <string notr="true">				background-color: rgb(236, 243, 244);</string>
-                  </property>
-                  <property name="tabChangesFocus">
-                   <bool>true</bool>
+                  <property name="text">
+                   <string>Señal</string>
                   </property>
                  </widget>
                 </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout">
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_13">
-                <item>
-                 <widget class="QPushButton" name="button_generate_data_new">
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="button_open_signal">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -296,21 +129,212 @@ color: rgb(31, 31, 31);
                    <string notr="true">background-color: rgb(0, 87, 111);</string>
                   </property>
                   <property name="text">
-                   <string>Nuevos
-Parametros</string>
+                   <string>Cargar Grafica</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="button_show_signal">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>60</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(0, 87, 111);</string>
+                  </property>
+                  <property name="text">
+                   <string>Mostrar</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QPushButton" name="button_hide_signal">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>60</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(0, 87, 111);</string>
+                  </property>
+                  <property name="text">
+                   <string>Ocultar</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_13">
+                  <property name="maximumSize">
+                   <size>
+                    <width>150</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Señal con ruido</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="button_open_signal_noisy">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(0, 87, 111);</string>
+                  </property>
+                  <property name="text">
+                   <string>Cargar Grafica</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QPushButton" name="button_show_signa_noisy">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>60</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(0, 87, 111);</string>
+                  </property>
+                  <property name="text">
+                   <string>Mostrar</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QPushButton" name="button_hide_signal_noisy">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>60</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(0, 87, 111);</string>
+                  </property>
+                  <property name="text">
+                   <string>Ocultar</string>
                   </property>
                  </widget>
                 </item>
                </layout>
               </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_5">
-                <item>
-                 <widget class="QPushButton" name="button_start">
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Configuración de la limpieza</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <item row="0" column="0" colspan="2">
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <widget class="QLabel" name="label_11">
+                    <property name="text">
+                     <string>Numero de puntos a tomar:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="input_number_points">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(216, 216, 216);</string>
+                    </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
+                    </property>
+                    <property name="readOnly">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursorWidth">
+                     <number>1</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="button_start_clean">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>35</height>
+                    <height>0</height>
                    </size>
                   </property>
                   <property name="font">
@@ -323,20 +347,16 @@ Parametros</string>
                   </property>
                   <property name="text">
                    <string>Iniciar 
- Entrenamiento</string>
+ Limpieza</string>
                   </property>
                  </widget>
                 </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_15">
-                <item>
-                 <widget class="QPushButton" name="button_clean">
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="button_erase_signal_clean">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>35</height>
+                    <height>0</height>
                    </size>
                   </property>
                   <property name="font">
@@ -348,7 +368,8 @@ Parametros</string>
                    <string notr="true">background-color: rgb(0, 87, 111);</string>
                   </property>
                   <property name="text">
-                   <string>Limpiar</string>
+                   <string>Eliminar 
+ Señal Limpiado</string>
                   </property>
                  </widget>
                 </item>
@@ -357,311 +378,12 @@ Parametros</string>
              </layout>
             </item>
            </layout>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Policy::Minimum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>80</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <item>
-             <widget class="QLabel" name="label_7">
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Metricas.</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0">
-              <property name="bottomMargin">
-               <number>6</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_18">
-                <property name="text">
-                 <string>Matriz de confusión.</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_19">
-                <property name="font">
-                 <font>
-                  <pointsize>8</pointsize>
-                  <italic>true</italic>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Nota: eje x = valores reales (Yes, No), eje y = valores predecidos (Yes, No)</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>100</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <layout class="QGridLayout" name="gridLayout">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QFrame" name="frame_3">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(3, 68, 13);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_8">
-                    <item>
-                     <widget class="QLabel" name="output_true_positives">
-                      <property name="font">
-                       <font>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>TP</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QFrame" name="frame_4">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(216, 216, 216);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_2">
-                    <item>
-                     <widget class="QLabel" name="output_false_positives">
-                      <property name="font">
-                       <font>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color: rgb(0, 0, 0);</string>
-                      </property>
-                      <property name="text">
-                       <string>FP</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QFrame" name="frame_5">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(216, 216, 216);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_7">
-                    <item>
-                     <widget class="QLabel" name="output_false_negatives">
-                      <property name="font">
-                       <font>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color: rgb(0, 0, 0);</string>
-                      </property>
-                      <property name="text">
-                       <string>FN</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QFrame" name="frame_6">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(3, 68, 13);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_6">
-                    <item>
-                     <widget class="QLabel" name="output_true_negatives">
-                      <property name="font">
-                       <font>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>TN</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,0">
-              <property name="bottomMargin">
-               <number>10</number>
-              </property>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_16">
-                <item>
-                 <widget class="QLabel" name="label_16">
-                  <property name="text">
-                   <string>Precisión</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="output_precision">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(216, 216, 216);</string>
-                  </property>
-                  <property name="tabChangesFocus">
-                   <bool>true</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>false</bool>
-                  </property>
-                  <property name="cursorWidth">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_17">
-                <item>
-                 <widget class="QLabel" name="label_17">
-                  <property name="text">
-                   <string>F1 Score</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="output_f1_score">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(216, 216, 216);</string>
-                  </property>
-                  <property name="tabChangesFocus">
-                   <bool>true</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                  <property name="cursorWidth">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="layout_graphic"/>
        </item>
       </layout>
      </widget>
