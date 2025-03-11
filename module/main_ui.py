@@ -152,7 +152,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(0, -1, -1, -1)
         self.label_15 = QLabel(self.frame_2)
         self.label_15.setObjectName(u"label_15")
 
@@ -160,6 +159,22 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.button_start_clean = QPushButton(self.frame_2)
+        self.button_start_clean.setObjectName(u"button_start_clean")
+        self.button_start_clean.setMinimumSize(QSize(0, 0))
+        self.button_start_clean.setFont(font1)
+        self.button_start_clean.setStyleSheet(u"background-color: rgb(0, 87, 111);")
+
+        self.gridLayout_2.addWidget(self.button_start_clean, 1, 0, 1, 1)
+
+        self.button_erase_signal_clean = QPushButton(self.frame_2)
+        self.button_erase_signal_clean.setObjectName(u"button_erase_signal_clean")
+        self.button_erase_signal_clean.setMinimumSize(QSize(0, 0))
+        self.button_erase_signal_clean.setFont(font1)
+        self.button_erase_signal_clean.setStyleSheet(u"background-color: rgb(0, 87, 111);")
+
+        self.gridLayout_2.addWidget(self.button_erase_signal_clean, 1, 1, 1, 1)
+
         self.verticalLayout_7 = QVBoxLayout()
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.label_11 = QLabel(self.frame_2)
@@ -179,23 +194,28 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.addWidget(self.input_number_points)
 
 
-        self.gridLayout_2.addLayout(self.verticalLayout_7, 0, 0, 1, 2)
+        self.gridLayout_2.addLayout(self.verticalLayout_7, 0, 0, 1, 1)
 
-        self.button_start_clean = QPushButton(self.frame_2)
-        self.button_start_clean.setObjectName(u"button_start_clean")
-        self.button_start_clean.setMinimumSize(QSize(0, 0))
-        self.button_start_clean.setFont(font1)
-        self.button_start_clean.setStyleSheet(u"background-color: rgb(0, 87, 111);")
+        self.verticalLayout_8 = QVBoxLayout()
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.label_16 = QLabel(self.frame_2)
+        self.label_16.setObjectName(u"label_16")
 
-        self.gridLayout_2.addWidget(self.button_start_clean, 1, 0, 1, 1)
+        self.verticalLayout_8.addWidget(self.label_16)
 
-        self.button_erase_signal_clean = QPushButton(self.frame_2)
-        self.button_erase_signal_clean.setObjectName(u"button_erase_signal_clean")
-        self.button_erase_signal_clean.setMinimumSize(QSize(0, 0))
-        self.button_erase_signal_clean.setFont(font1)
-        self.button_erase_signal_clean.setStyleSheet(u"background-color: rgb(0, 87, 111);")
+        self.input_number_points_2 = QTextEdit(self.frame_2)
+        self.input_number_points_2.setObjectName(u"input_number_points_2")
+        self.input_number_points_2.setEnabled(True)
+        self.input_number_points_2.setMaximumSize(QSize(16777215, 25))
+        self.input_number_points_2.setStyleSheet(u"background-color: rgb(216, 216, 216);")
+        self.input_number_points_2.setTabChangesFocus(True)
+        self.input_number_points_2.setReadOnly(False)
+        self.input_number_points_2.setCursorWidth(1)
 
-        self.gridLayout_2.addWidget(self.button_erase_signal_clean, 1, 1, 1, 1)
+        self.verticalLayout_8.addWidget(self.input_number_points_2)
+
+
+        self.gridLayout_2.addLayout(self.verticalLayout_8, 0, 1, 1, 1)
 
 
         self.verticalLayout_3.addLayout(self.gridLayout_2)
@@ -203,6 +223,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addLayout(self.verticalLayout_3)
 
+        self.horizontalLayout.setStretch(0, 1)
+        self.horizontalLayout.setStretch(1, 1)
 
         self.verticalLayout_4.addLayout(self.horizontalLayout)
 
@@ -239,10 +261,11 @@ class Ui_MainWindow(object):
         self.button_show_signa_noisy.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.button_hide_signal_noisy.setText(QCoreApplication.translate("MainWindow", u"Ocultar", None))
         self.label_15.setText(QCoreApplication.translate("MainWindow", u"Configuraci\u00f3n de la limpieza", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Numero de puntos a tomar:", None))
         self.button_start_clean.setText(QCoreApplication.translate("MainWindow", u"Iniciar \n"
 " Limpieza", None))
         self.button_erase_signal_clean.setText(QCoreApplication.translate("MainWindow", u"Eliminar \n"
 " Se\u00f1al Limpiado", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Numero de puntos a tomar:", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Taza de Aprendizaje", None))
     # retranslateUi
 

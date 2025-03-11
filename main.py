@@ -14,7 +14,7 @@ class MainWindow(QMainWindow):
         self.rangeYMinGraphic = -3
         self.rangeYMaxGraphic = 3
 
-        self.zoom_factor = 1.2
+        self.zoom_factor = 1.5
 
         #Valores de las señales
         self.x_signal = None

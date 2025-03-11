@@ -84,7 +84,7 @@ color: rgb(31, 31, 31);
            </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+           <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <property name="rightMargin">
@@ -281,9 +281,6 @@ color: rgb(31, 31, 31);
             </item>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_3">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
               <item>
                <widget class="QLabel" name="label_15">
                 <property name="text">
@@ -293,42 +290,6 @@ color: rgb(31, 31, 31);
               </item>
               <item>
                <layout class="QGridLayout" name="gridLayout_2">
-                <item row="0" column="0" colspan="2">
-                 <layout class="QVBoxLayout" name="verticalLayout_7">
-                  <item>
-                   <widget class="QLabel" name="label_11">
-                    <property name="text">
-                     <string>Numero de puntos a tomar:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTextEdit" name="input_number_points">
-                    <property name="enabled">
-                     <bool>true</bool>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>25</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(216, 216, 216);</string>
-                    </property>
-                    <property name="tabChangesFocus">
-                     <bool>true</bool>
-                    </property>
-                    <property name="readOnly">
-                     <bool>false</bool>
-                    </property>
-                    <property name="cursorWidth">
-                     <number>1</number>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
                 <item row="1" column="0">
                  <widget class="QPushButton" name="button_start_clean">
                   <property name="minimumSize">
@@ -372,6 +333,78 @@ color: rgb(31, 31, 31);
  Señal Limpiado</string>
                   </property>
                  </widget>
+                </item>
+                <item row="0" column="0">
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <widget class="QLabel" name="label_11">
+                    <property name="text">
+                     <string>Numero de puntos a tomar:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="input_number_points">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(216, 216, 216);</string>
+                    </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
+                    </property>
+                    <property name="readOnly">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursorWidth">
+                     <number>1</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="0" column="1">
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item>
+                   <widget class="QLabel" name="label_16">
+                    <property name="text">
+                     <string>Taza de Aprendizaje</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="input_number_points_2">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(216, 216, 216);</string>
+                    </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
+                    </property>
+                    <property name="readOnly">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursorWidth">
+                     <number>1</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </item>
