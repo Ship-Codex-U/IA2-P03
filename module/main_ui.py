@@ -251,21 +251,21 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Adaline", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Carga de Se\u00f1ales", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Se\u00f1al", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Carga de Se\u00f1ales:", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Se\u00f1al.", None))
         self.button_open_signal.setText(QCoreApplication.translate("MainWindow", u"Cargar Grafica", None))
         self.button_show_signal.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.button_hide_signal.setText(QCoreApplication.translate("MainWindow", u"Ocultar", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Se\u00f1al con ruido", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Se\u00f1al con Ruido.", None))
         self.button_open_signal_noisy.setText(QCoreApplication.translate("MainWindow", u"Cargar Grafica", None))
         self.button_show_signa_noisy.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.button_hide_signal_noisy.setText(QCoreApplication.translate("MainWindow", u"Ocultar", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Configuraci\u00f3n de la limpieza", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Configuraci\u00f3n de la Limpieza:", None))
         self.button_start_clean.setText(QCoreApplication.translate("MainWindow", u"Iniciar \n"
 " Limpieza", None))
         self.button_erase_signal_clean.setText(QCoreApplication.translate("MainWindow", u"Eliminar \n"
 " Se\u00f1al Limpiado", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Numero de puntos a tomar:", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Numero de Puntos a Tomar:", None))
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"Taza de Aprendizaje", None))
     # retranslateUi
 

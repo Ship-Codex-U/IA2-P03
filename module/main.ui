@@ -93,7 +93,7 @@ color: rgb(31, 31, 31);
               <item>
                <widget class="QLabel" name="label_14">
                 <property name="text">
-                 <string>Carga de Señales</string>
+                 <string>Carga de Señales:</string>
                 </property>
                </widget>
               </item>
@@ -108,7 +108,7 @@ color: rgb(31, 31, 31);
                    </size>
                   </property>
                   <property name="text">
-                   <string>Señal</string>
+                   <string>Señal.</string>
                   </property>
                  </widget>
                 </item>
@@ -196,7 +196,7 @@ color: rgb(31, 31, 31);
                    </size>
                   </property>
                   <property name="text">
-                   <string>Señal con ruido</string>
+                   <string>Señal con Ruido.</string>
                   </property>
                  </widget>
                 </item>
@@ -284,7 +284,7 @@ color: rgb(31, 31, 31);
               <item>
                <widget class="QLabel" name="label_15">
                 <property name="text">
-                 <string>Configuración de la limpieza</string>
+                 <string>Configuración de la Limpieza:</string>
                 </property>
                </widget>
               </item>
@@ -339,7 +339,7 @@ color: rgb(31, 31, 31);
                   <item>
                    <widget class="QLabel" name="label_11">
                     <property name="text">
-                     <string>Numero de puntos a tomar:</string>
+                     <string>Numero de Puntos a Tomar:</string>
                     </property>
                    </widget>
                   </item>
