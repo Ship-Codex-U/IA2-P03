@@ -16,6 +16,17 @@ class MainWindow(QMainWindow):
 
         self.zoom_factor = 1.2
 
+        #Valores de las señales
+        self.x_signal = None
+        self.y_signal = None
+
+        self.x_signal_noisy = None
+        self.y_signal_noisy = None
+
+        #Valor auxiliar para poder mostrar u ocultar la señal
+        self.line_signal = None
+        self.line_signal_noisy = None
+
         self.points = Points()
         self.perceptron = Perceptron()
 
@@ -39,54 +50,48 @@ class MainWindow(QMainWindow):
 
         #Conectamos los eventos de los botones
         self.ui.button_open_signal.clicked.connect(self.open_signal)
+        self.ui.button_open_signal_noisy.clicked.connect(self.open_signal_noisy)
+        self.ui.button_show_signal.clicked.connect(self.show_signal)
+        self.ui.button_show_signa_noisy.clicked.connect(self.show_signal_noisy)
+        self.ui.button_hide_signal.clicked.connect(self.hide_signal)
+        self.ui.button_hide_signal_noisy.clicked.connect(self.hide_signal_noisy)
 
         self.press = None
         self.init_plot()
         self.show()
     
+    @Slot()
+    def show_signal(self):
+        if self.line_signal:
+            self.line_signal[0].set_visible(True)
+            self.canvas.draw_idle()
+    
+    @Slot()
+    def show_signal_noisy(self):
+        if self.line_signal_noisy:
+            self.line_signal_noisy[0].set_visible(True)
+            self.canvas.draw_idle()
+    
+    @Slot()
+    def hide_signal(self):
+        if self.line_signal:
+            self.line_signal[0].set_visible(False)
+            self.canvas.draw_idle()
+    
+    @Slot()
+    def hide_signal_noisy(self):
+        if self.line_signal_noisy:
+            self.line_signal_noisy[0].set_visible(False)
+            self.canvas.draw_idle()
+
     @Slot( )
     def open_signal(self):
-        mensaje1 = QMessageBox(self)
-        mensaje1.setWindowTitle("Alerta.")
-        mensaje1.setText("El archivo no se pudo abrir correctamente")
-        mensaje1.setStandardButtons(QMessageBox.Ok)
-        mensaje1.setDefaultButton(QMessageBox.Ok)
-        mensaje1.setIcon(QMessageBox.Critical)
-        
-        mensaje2 = QMessageBox(self)
-        mensaje2.setWindowTitle("Notificacion.")
-        mensaje2.setText("Archivo cargado exitosamente")
-        mensaje2.setStandardButtons(QMessageBox.Ok)
-        mensaje2.setDefaultButton(QMessageBox.Ok)
-        mensaje2.setIcon(QMessageBox.Information)
-        
-        ubicacion = QFileDialog.getOpenFileName(
-            self,
-            'Abrir Archivo',
-            '.',
-            'TXT (*.txt)'
-        )[0]
-        
-        if ubicacion:
-            x, y = self.load_data(ubicacion)
-            if x is not None and y is not None:
-                print(x, y)
-                self.ax.plot(x, y, 'o', color='blue', markersize=4)
-                self.canvas.draw_idle()
-                mensaje2.exec()
-            else: 
-                mensaje1.exec()
-        else: 
-            mensaje1.exec()
+        self.x_signal, self.y_signal, self.line_signal = self.open_and_draw_data('blue', 'Señal Original')
 
-    def load_data(self, filepath):
-        try:
-            data = np.loadtxt(filepath)
-            x = data[:, 0]
-            y = data[:, 1]
-            return x, y
-        except Exception as e:
-            return None, None
+    @Slot( )
+    def open_signal_noisy(self):
+        self.x_signal_noisy, self.y_signal_noisy, self.line_signal_noisy = self.open_and_draw_data('red', 'Señal con Ruido')
+    
     # @Slot()
     # def click_start_analysis(self):
     #     input_values = self.points.get_inputs()
@@ -192,6 +197,42 @@ class MainWindow(QMainWindow):
     #     self.ui.output_true_positives.setText("TP")
     #     self.ui.output_precision.setText("")
     #     self.ui.output_f1_score.setText("")
+
+    def open_and_draw_data(self, colorLine : str, labelGraphic : str):
+        x = None
+        y = None
+        line = None
+
+        ubicacion = QFileDialog.getOpenFileName(
+            self,
+            'Abrir Archivo',
+            '.',
+            'TXT (*.txt)'
+        )[0]
+        
+        if ubicacion:
+            x, y = self.load_data(ubicacion)
+
+            if x is not None and y is not None:                
+                line = self.ax.plot(x, y, color=colorLine, label=labelGraphic)
+                self.ax.legend()
+                self.canvas.draw_idle()
+
+            else: 
+                QMessageBox.critical(self, "Alerta", "El archivo no se pudo abrir correctamente.", QMessageBox.Ok)    
+        else: 
+            QMessageBox.critical(self, "Alerta", "El archivo no se pudo abrir correctamente.", QMessageBox.Ok)
+
+        return x, y, line
+
+    def load_data(self, filepath):
+        try:
+            data = np.loadtxt(filepath)
+            x = data[:, 0]
+            y = data[:, 1]
+            return x, y
+        except Exception as e:
+            return None, None
 
     def init_plot(self):
         self.ax.clear()
