@@ -320,15 +320,17 @@ class MainWindow(QMainWindow):
     
     def validate_inputs(self):
         number_points = self.ui.input_number_points.toPlainText()
+        alpha = self.ui.input_alpha.toPlainText()
 
-        if not number_points:
-            QMessageBox.critical(self, "Error", "El campo esta vacio, favor de verificar.")    
+        if not number_points or not alpha:
+            QMessageBox.critical(self, "Error", "Alguno de los campos esta vacio, favor de verificar.")    
             return False
 
         try:
             number_points = int(number_points)
+            alpha = float(alpha)
         except ValueError:
-            QMessageBox.critical(self, "Error", "El campo solo acepta valores numericos, favor de verificar.")
+            QMessageBox.critical(self, "Error", "Los campos solo acepta valores numericos, favor de verificar.")
             return False
 
         return True

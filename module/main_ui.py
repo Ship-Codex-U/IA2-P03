@@ -203,16 +203,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.label_16)
 
-        self.input_number_points_2 = QTextEdit(self.frame_2)
-        self.input_number_points_2.setObjectName(u"input_number_points_2")
-        self.input_number_points_2.setEnabled(True)
-        self.input_number_points_2.setMaximumSize(QSize(16777215, 25))
-        self.input_number_points_2.setStyleSheet(u"background-color: rgb(216, 216, 216);")
-        self.input_number_points_2.setTabChangesFocus(True)
-        self.input_number_points_2.setReadOnly(False)
-        self.input_number_points_2.setCursorWidth(1)
+        self.input_alpha = QTextEdit(self.frame_2)
+        self.input_alpha.setObjectName(u"input_alpha")
+        self.input_alpha.setEnabled(True)
+        self.input_alpha.setMaximumSize(QSize(16777215, 25))
+        self.input_alpha.setStyleSheet(u"background-color: rgb(216, 216, 216);")
+        self.input_alpha.setTabChangesFocus(True)
+        self.input_alpha.setReadOnly(False)
+        self.input_alpha.setCursorWidth(1)
 
-        self.verticalLayout_8.addWidget(self.input_number_points_2)
+        self.verticalLayout_8.addWidget(self.input_alpha)
 
 
         self.gridLayout_2.addLayout(self.verticalLayout_8, 0, 1, 1, 1)

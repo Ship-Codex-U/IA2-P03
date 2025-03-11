@@ -380,7 +380,7 @@ color: rgb(31, 31, 31);
                    </widget>
                   </item>
                   <item>
-                   <widget class="QTextEdit" name="input_number_points_2">
+                   <widget class="QTextEdit" name="input_alpha">
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
