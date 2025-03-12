@@ -7,20 +7,21 @@ class Adaline:
         self.__weights = np.zeros(number_of_inputs)
         self.__bias = 0
 
+        self.randomize_weights_and_bias()
+
     def activation(self, net: float) -> float:
         return net
     
-    def predict(self, inputs : list, result : float, alpha : float) -> list:
+    def predict(self, inputs : list, result : float, alpha : float) -> float:
         net = np.dot(inputs, self.__weights) + self.__bias
 
-        e = result - net
+        error = result - net
 
         for i in range(len(self.__weights)):
-            self.__weights[i] = self.__weights[i] + e * alpha * inputs[i]
-        self.__bias[0] = self.__bias[0] + e * alpha
+            self.__weights[i] = self.__weights[i] + error * alpha * inputs[i]
+        self.__bias = self.__bias + error * alpha
 
-
-        return self.activation(net)
+        return self.activation(net[0].astype(np.float64))
         
     @property
     def weights(self):
