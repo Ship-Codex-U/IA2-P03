@@ -1,6 +1,7 @@
 import sys
 import numpy as np
 from sklearn.metrics import confusion_matrix
+import time
 
 from module import *
 
@@ -26,6 +27,7 @@ class MainWindow(QMainWindow):
         #Valor auxiliar para poder mostrar u ocultar la señal
         self.line_signal = None
         self.line_signal_noisy = None
+        self.line_signal_clean = None
 
         self.points = Points()
         self.perceptron = Perceptron()
@@ -56,59 +58,27 @@ class MainWindow(QMainWindow):
         self.ui.button_hide_signal.clicked.connect(self.hide_signal)
         self.ui.button_hide_signal_noisy.clicked.connect(self.hide_signal_noisy)
         self.ui.button_start_clean.clicked.connect(self.start_clean)
+        self.ui.button_erase_signal_clean.clicked.connect(self.remove_signal_clean)
 
         self.press = None
         self.init_plot()
         self.show()
-    
-    def generate_clean_signal(self, step : int , alpha : float, signal_origin_points : tuple, signal_noise_points : tuple):
-        x_signal_origin = signal_origin_points[0]
-        y_signal_origin = signal_origin_points[1]
-        x_signal_noise = signal_noise_points[0]
-        y_signal_noise = signal_noise_points[1]
-
-        x_signal_clean = []
-        y_signal_clean = []
-
-        adaline = Adaline(step)
-
-        cont = 0
-
-        #Inicializar los valores de la señal limpia con los valores de la señal original el numero de veces que indico el usuario
-        #antes de empezar a limpiar la señal
-
-        for i in range(step):
-            x_signal_clean.append(x_signal_origin[i])
-            y_signal_clean.append(y_signal_noise[i])
-            cont += 1
         
-        #Empezar a limpiar la señal
-
-        while cont < len(x_signal_origin):
-            inputs = []
-
-            for i in range(step - 1, -1, -1):
-                inputs.append(y_signal_clean[i-i])
-            
-            result = y_signal_origin[cont + 1]
-            #Ejemplo
-            # Señal original 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10
-            # Señal con ruido 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 - 11
-            # step = 3
-            # cont = 2
-            # result = 4
-
-            x_signal_clean.append(x_signal_origin[i])
-            y_signal_clean.append(adaline.predict(inputs, result, alpha))
-            cont += 1
-        
-        return x_signal_clean, y_signal_clean
-        
+    @Slot()
+    def remove_signal_clean(self):
+        if self.line_signal_clean:
+            self.line_signal_clean[0].remove()
+            self.line_signal_clean = None
+            self.ax.legend()
+            self.canvas.draw_idle()
 
     @Slot()
     def start_clean(self):
         if self.validate_inputs() and self.validate_upload_data():
             
+            if self.line_signal_clean:
+                self.remove_signal_clean()
+
             self.x_signal_clean, self.y_signal_clean = self.generate_clean_signal(
                 int(self.ui.input_number_points.toPlainText()),
                 float(self.ui.input_alpha.toPlainText()),
@@ -119,7 +89,8 @@ class MainWindow(QMainWindow):
             self.line_signal_clean = self.ax.plot(self.x_signal_clean, self.y_signal_clean, color='green', label='Señal Limpia')
 
             self.ax.legend()
-            self.canvas.draw_idle()    
+            self.canvas.draw_idle()
+
     @Slot()
     def show_signal(self):
         if self.line_signal:
@@ -151,112 +122,54 @@ class MainWindow(QMainWindow):
     @Slot( )
     def open_signal_noisy(self):
         self.x_signal_noisy, self.y_signal_noisy, self.line_signal_noisy = self.open_and_draw_data('red', 'Señal con Ruido')
-    
-    # @Slot()
-    # def click_start_analysis(self):
-    #     input_values = self.points.get_inputs()
-    #     true_values = self.points.get_results()
 
-    #     if not self.validate_inputs():
-    #         return
+    def generate_clean_signal(self, step : int , alpha : float, signal_origin_points : tuple, signal_noise_points : tuple):
+        x_signal_origin = signal_origin_points[0]
+        y_signal_origin = signal_origin_points[1]
+        x_signal_noise = signal_noise_points[0]
+        y_signal_noise = signal_noise_points[1]
+
+        x_signal_clean = []
+        y_signal_clean = []
+
+        adaline = Adaline(step)
+
+        cont = -1
+
+        #Inicializar los valores de la señal limpia con los valores de la señal original el numero de veces que indico el usuario
+        #antes de empezar a limpiar la señal
+
+        for i in range(step):
+            x_signal_clean.append(x_signal_noise[i])
+            y_signal_clean.append(y_signal_noise[i])
+            cont += 1
         
-    #     alpha = float(self.ui.input_alpha.toPlainText())
-    #     iterations = 1000
+        #Empezar a limpiar la señal
 
-    #     if not self.perceptron.train(input_values, true_values, alpha, iterations):
-    #         QMessageBox.critical(self, "Error", "No se pudo entrenar el perceptrón.")
+        while cont < len(x_signal_origin) - 1:
+            inputs = []
+            result = []
 
-    #     weight_01, weight_02 = self.perceptron.weights
-    #     bias = self.perceptron.bias
+            for i in range(step - 1, -1, -1):
+                inputs.append(y_signal_noise[cont - i])
+            #Si step = 3
+            #Salidas:
+            #       2 - 1 - 0
+            
+            result = y_signal_noise[cont + 1]
+            #Ejemplo
+            # Señal con ruido (y) 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 - 11
+            # step = 3
+            # cont = 2
+            # result = 5
 
-    #     self.ui.output_weight_01.setText(str(round(weight_01, 5)))
-    #     self.ui.output_weight_02.setText(str(round(weight_02, 5)))
-    #     self.ui.output_bias.setText(str(round(bias, 2)))
+            x_signal_clean.append(x_signal_noise[cont + 1])
+            predic = adaline.predict(inputs, result, alpha)
 
-    #     m, b = self.perceptron.get_MB_equation_line()
+            y_signal_clean.append(predic)
+            cont += 1
 
-    #     if m is not None:
-    #         self.draw_equation_line(self.rangeMinGraphic, self.rangeMaxGraphic, m, b)
-        
-    #     predicted_values = self.perceptron.predict(self.points.get_inputs())
-
-    #     if len(true_values) != len(predicted_values):
-    #         QMessageBox.critical(self, "Error", "El número de valores verdaderos y predichos no coincide.")
-    #     else:
-    #         tn, fp, fn, tp = confusion_matrix(true_values, predicted_values).ravel()
-        
-    #         self.ui.output_true_negatives.setText(str(tn))
-    #         self.ui.output_false_positives.setText(str(fp))
-    #         self.ui.output_false_negatives.setText(str(fn))
-    #         self.ui.output_true_positives.setText(str(tp))
-        
-    #         precision = tp / (tp + fp) #¿Que proporcion de identificaciones positivas fue realmente correcta?
-    #         recall = tp / (tp + fn) #¿Que proporcion de positivos reales se identificaron correctamente?
-    #         f1_score = 2 * (precision * recall) / (precision + recall) #Media armónica de precision y recall
-
-    #         self.ui.output_precision.setText(str(round(precision, 2)))
-    #         self.ui.output_f1_score.setText(str(round(f1_score, 2)))
-
-    
-    # @Slot()
-    # def generate_new_data(self):
-    #     self.perceptron.randomize_weights_and_bias()
-
-    #     weight_01, weight_02 = self.perceptron.weights
-    #     bias = self.perceptron.bias
-
-    #     self.ui.output_weight_01.setText(str(round(weight_01, 5)))
-    #     self.ui.output_weight_02.setText(str(round(weight_02, 5)))
-    #     self.ui.output_bias.setText(str(round(bias, 5)))
-
-    # def click_insert_point_mouse(self, event):
-    #     if event.xdata is not None and event.ydata is not None:
-    #         coord = (event.xdata, event.ydata)
-    #         color = 'black'
-    #         value = 0
-
-    #         if event.button == 1:
-    #             color = 'blue'
-    #             value = 1
-    #         elif event.button == 3:
-    #             color = 'red'
-    #             value = 0
-    #         else:
-    #             color = 'black'
-    #             value = -1
-
-    #         self.ax.plot(coord[0], coord[1], 'o', color=color, markersize=4)
-    #         self.ax.annotate(f'({value})', (coord[0], coord[1]), textcoords="offset points", xytext=(0,5), ha='center')
-
-    #         self.points.insert_point(coord[0], coord[1], value, color)
-
-    #         self.canvas.draw_idle()
-
-    #         #self.update_plot()
-    
-    # def draw_equation_line(self, x_min, x_max, m, b):
-    #     x = np.linspace(x_min, x_max + 1, 1000)
-    #     y = m * x + b
-
-    #     self.ax.plot(x, y, color='red', label=f'y = {m:.2f}x + {b:.2f} ')
-    #     self.ax.legend()
-    #     self.canvas.draw_idle()
-
-    # @Slot()
-    # def click_clean(self):
-    #     self.points.clear()
-    #     self.init_inputs()
-    #     self.init_plot()
-    #     self.init_maetrics()
-    #     self.canvas.draw_idle()
-    
-    # def init_maetrics(self):
-    #     self.ui.output_true_negatives.setText("TN")
-    #     self.ui.output_false_positives.setText("FP")
-    #     self.ui.output_false_negatives.setText("FN")
-    #     self.ui.output_true_positives.setText("TP")
-    #     self.ui.output_precision.setText("")
-    #     self.ui.output_f1_score.setText("")
+        return x_signal_clean, y_signal_clean
 
     def open_and_draw_data(self, colorLine : str, labelGraphic : str):
         x = None
@@ -393,6 +306,12 @@ class MainWindow(QMainWindow):
             QMessageBox.critical(self, "Error", "Los campos solo acepta valores numericos, favor de verificar.")
             return False
 
+        return True
+
+    def validate_upload_data(self):
+        if self.x_signal is None or self.x_signal_noisy is None or self.y_signal is None or self.y_signal_noisy is None:
+            QMessageBox.critical(self, "Error", "No se han cargado las señales, favor de verificar.")
+            return False
         return True
 
 
