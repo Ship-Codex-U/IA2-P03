@@ -29,9 +29,6 @@ class MainWindow(QMainWindow):
         self.line_signal_noisy = None
         self.line_signal_clean = None
 
-        self.points = Points()
-        self.perceptron = Perceptron()
-
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
