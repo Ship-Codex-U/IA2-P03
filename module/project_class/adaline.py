@@ -15,9 +15,10 @@ class Adaline:
 
         e = result - net
 
-        self.__weights[0] = self.__weights[0] + e * alpha * inputs[i][0]
-        self.__weights[1] = self.__weights[1] + e * alpha * inputs[i][1]
+        for i in range(len(self.__weights)):
+            self.__weights[i] = self.__weights[i] + e * alpha * inputs[i]
         self.__bias[0] = self.__bias[0] + e * alpha
+
 
         return self.activation(net)
         

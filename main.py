@@ -23,9 +23,13 @@ class MainWindow(QMainWindow):
         self.x_signal_noisy = None
         self.y_signal_noisy = None
 
+        self.x_signal_clean = None
+        self.y_signal_clean = None
+
         #Valor auxiliar para poder mostrar u ocultar la señal
         self.line_signal = None
         self.line_signal_noisy = None
+        self.line_signal_clean = None
 
         self.points = Points()
         self.perceptron = Perceptron()
@@ -55,11 +59,72 @@ class MainWindow(QMainWindow):
         self.ui.button_show_signa_noisy.clicked.connect(self.show_signal_noisy)
         self.ui.button_hide_signal.clicked.connect(self.hide_signal)
         self.ui.button_hide_signal_noisy.clicked.connect(self.hide_signal_noisy)
+        self.ui.button_start_clean.clicked.connect(self.start_clean)
 
         self.press = None
         self.init_plot()
         self.show()
     
+    def generate_clean_signal(self, step : int , alpha : float, signal_origin_points : tuple, signal_noise_points : tuple):
+        x_signal_origin = signal_origin_points[0]
+        y_signal_origin = signal_origin_points[1]
+        x_signal_noise = signal_noise_points[0]
+        y_signal_noise = signal_noise_points[1]
+
+        x_signal_clean = []
+        y_signal_clean = []
+
+        adaline = Adaline(step)
+
+        cont = 0
+
+        #Inicializar los valores de la señal limpia con los valores de la señal original el numero de veces que indico el usuario
+        #antes de empezar a limpiar la señal
+
+        for i in range(step):
+            x_signal_clean.append(x_signal_origin[i])
+            y_signal_clean.append(y_signal_noise[i])
+            cont += 1
+        
+        #Empezar a limpiar la señal
+
+        while cont < len(x_signal_origin):
+            inputs = []
+
+            for i in range(step - 1, -1, -1):
+                inputs.append(y_signal_clean[i-i])
+            
+            result = y_signal_origin[cont]
+            #Ejemplo
+            # Señal original 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10
+            # Señal con ruido 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 - 11
+            # step = 3
+            # cont = 2
+            # result = 3
+
+            x_signal_clean.append(x_signal_origin[i])
+            y_signal_clean.append(adaline.predict(inputs, result, alpha))
+            cont += 1
+        
+        return x_signal_clean, y_signal_clean
+        
+
+    @Slot()
+    def start_clean(self):
+        if self.validate_inputs() and self.validate_upload_data():
+            
+            self.x_signal_clean, self.y_signal_clean = self.generate_clean_signal(
+                int(self.ui.input_number_points.toPlainText()),
+                float(self.ui.input_alpha.toPlainText()),
+                (self.x_signal, self.y_signal),
+                (self.x_signal_noisy, self.y_signal_noisy)
+            )
+
+            self.line_signal_clean = self.ax.plot(self.x_signal_clean, self.y_signal_clean, color='green', label='Señal Limpia')
+
+            self.ax.legend()
+            self.canvas.draw_idle()
+
     @Slot()
     def show_signal(self):
         if self.line_signal:
@@ -335,6 +400,11 @@ class MainWindow(QMainWindow):
 
         return True
 
+    def validate_upload_data(self):
+        if self.x_signal is None or self.x_signal_noisy is None or self.y_signal is None or self.y_signal_noisy is None:
+            QMessageBox.critical(self, "Error", "No se han cargado las señales, favor de verificar.")
+            return False
+        return True
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
