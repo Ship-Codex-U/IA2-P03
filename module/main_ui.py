@@ -73,6 +73,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setContentsMargins(-1, -1, 15, -1)
         self.label_14 = QLabel(self.frame_2)
         self.label_14.setObjectName(u"label_14")
+        font1 = QFont()
+        font1.setBold(True)
+        self.label_14.setFont(font1)
 
         self.verticalLayout_2.addWidget(self.label_14)
 
@@ -87,9 +90,9 @@ class Ui_MainWindow(object):
         self.button_open_signal = QPushButton(self.frame_2)
         self.button_open_signal.setObjectName(u"button_open_signal")
         self.button_open_signal.setMinimumSize(QSize(0, 35))
-        font1 = QFont()
-        font1.setPointSize(8)
-        self.button_open_signal.setFont(font1)
+        font2 = QFont()
+        font2.setPointSize(8)
+        self.button_open_signal.setFont(font2)
         self.button_open_signal.setStyleSheet(u"background-color: rgb(0, 87, 111);")
 
         self.gridLayout.addWidget(self.button_open_signal, 0, 1, 1, 1)
@@ -98,7 +101,7 @@ class Ui_MainWindow(object):
         self.button_show_signal.setObjectName(u"button_show_signal")
         self.button_show_signal.setMinimumSize(QSize(0, 35))
         self.button_show_signal.setMaximumSize(QSize(60, 16777215))
-        self.button_show_signal.setFont(font1)
+        self.button_show_signal.setFont(font2)
         self.button_show_signal.setStyleSheet(u"background-color: rgb(0, 87, 111);")
 
         self.gridLayout.addWidget(self.button_show_signal, 0, 2, 1, 1)
@@ -107,7 +110,7 @@ class Ui_MainWindow(object):
         self.button_hide_signal.setObjectName(u"button_hide_signal")
         self.button_hide_signal.setMinimumSize(QSize(0, 35))
         self.button_hide_signal.setMaximumSize(QSize(60, 16777215))
-        self.button_hide_signal.setFont(font1)
+        self.button_hide_signal.setFont(font2)
         self.button_hide_signal.setStyleSheet(u"background-color: rgb(0, 87, 111);")
 
         self.gridLayout.addWidget(self.button_hide_signal, 0, 3, 1, 1)
@@ -121,7 +124,7 @@ class Ui_MainWindow(object):
         self.button_open_signal_noisy = QPushButton(self.frame_2)
         self.button_open_signal_noisy.setObjectName(u"button_open_signal_noisy")
         self.button_open_signal_noisy.setMinimumSize(QSize(0, 35))
-        self.button_open_signal_noisy.setFont(font1)
+        self.button_open_signal_noisy.setFont(font2)
         self.button_open_signal_noisy.setStyleSheet(u"background-color: rgb(0, 87, 111);")
 
         self.gridLayout.addWidget(self.button_open_signal_noisy, 1, 1, 1, 1)
@@ -130,7 +133,7 @@ class Ui_MainWindow(object):
         self.button_show_signa_noisy.setObjectName(u"button_show_signa_noisy")
         self.button_show_signa_noisy.setMinimumSize(QSize(0, 35))
         self.button_show_signa_noisy.setMaximumSize(QSize(60, 16777215))
-        self.button_show_signa_noisy.setFont(font1)
+        self.button_show_signa_noisy.setFont(font2)
         self.button_show_signa_noisy.setStyleSheet(u"background-color: rgb(0, 87, 111);")
 
         self.gridLayout.addWidget(self.button_show_signa_noisy, 1, 2, 1, 1)
@@ -139,7 +142,7 @@ class Ui_MainWindow(object):
         self.button_hide_signal_noisy.setObjectName(u"button_hide_signal_noisy")
         self.button_hide_signal_noisy.setMinimumSize(QSize(0, 35))
         self.button_hide_signal_noisy.setMaximumSize(QSize(60, 16777215))
-        self.button_hide_signal_noisy.setFont(font1)
+        self.button_hide_signal_noisy.setFont(font2)
         self.button_hide_signal_noisy.setStyleSheet(u"background-color: rgb(0, 87, 111);")
 
         self.gridLayout.addWidget(self.button_hide_signal_noisy, 1, 3, 1, 1)
@@ -154,6 +157,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.label_15 = QLabel(self.frame_2)
         self.label_15.setObjectName(u"label_15")
+        self.label_15.setFont(font1)
 
         self.verticalLayout_3.addWidget(self.label_15)
 
@@ -162,7 +166,7 @@ class Ui_MainWindow(object):
         self.button_start_clean = QPushButton(self.frame_2)
         self.button_start_clean.setObjectName(u"button_start_clean")
         self.button_start_clean.setMinimumSize(QSize(0, 0))
-        self.button_start_clean.setFont(font1)
+        self.button_start_clean.setFont(font2)
         self.button_start_clean.setStyleSheet(u"background-color: rgb(0, 87, 111);")
 
         self.gridLayout_2.addWidget(self.button_start_clean, 1, 0, 1, 1)
@@ -170,7 +174,7 @@ class Ui_MainWindow(object):
         self.button_erase_signal_clean = QPushButton(self.frame_2)
         self.button_erase_signal_clean.setObjectName(u"button_erase_signal_clean")
         self.button_erase_signal_clean.setMinimumSize(QSize(0, 0))
-        self.button_erase_signal_clean.setFont(font1)
+        self.button_erase_signal_clean.setFont(font2)
         self.button_erase_signal_clean.setStyleSheet(u"background-color: rgb(0, 87, 111);")
 
         self.gridLayout_2.addWidget(self.button_erase_signal_clean, 1, 1, 1, 1)
@@ -252,7 +256,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Adaline", None))
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"Carga de Se\u00f1ales:", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Se\u00f1al.", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Se\u00f1al Original.", None))
         self.button_open_signal.setText(QCoreApplication.translate("MainWindow", u"Cargar Grafica", None))
         self.button_show_signal.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.button_hide_signal.setText(QCoreApplication.translate("MainWindow", u"Ocultar", None))

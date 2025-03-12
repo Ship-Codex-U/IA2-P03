@@ -17,15 +17,9 @@ class Adaline:
 
         error = result - net
 
-        print(f'Error resultante = {error}')
-
         for i in range(len(self.__weights)):
             self.__weights[i] = self.__weights[i] + error * alpha * inputs[i]
         self.__bias = self.__bias + error * alpha
-
-        print(f'Pesos = {self.__weights}')
-        print(f'Bias = {self.__bias}')
-
 
         return self.activation(net[0].astype(np.float64))
         

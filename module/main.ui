@@ -92,6 +92,11 @@ color: rgb(31, 31, 31);
               </property>
               <item>
                <widget class="QLabel" name="label_14">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Carga de Señales:</string>
                 </property>
@@ -108,7 +113,7 @@ color: rgb(31, 31, 31);
                    </size>
                   </property>
                   <property name="text">
-                   <string>Señal.</string>
+                   <string>Señal Original.</string>
                   </property>
                  </widget>
                 </item>
@@ -283,6 +288,11 @@ color: rgb(31, 31, 31);
              <layout class="QVBoxLayout" name="verticalLayout_3">
               <item>
                <widget class="QLabel" name="label_15">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Configuración de la Limpieza:</string>
                 </property>
