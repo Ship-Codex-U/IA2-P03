@@ -13,11 +13,12 @@ class Adaline:
     def predict(self, inputs : list, result : float, alpha : float) -> list:
         net = np.dot(inputs, self.__weights) + self.__bias
 
-        e = result - net
+        error = result - net
 
-        self.__weights[0] = self.__weights[0] + e * alpha * inputs[i][0]
-        self.__weights[1] = self.__weights[1] + e * alpha * inputs[i][1]
-        self.__bias[0] = self.__bias[0] + e * alpha
+        for i in range(len(self.__weights)):
+            self.__weights[i] = self.__weights[i] + error * alpha * inputs[i]
+        self.__bias[0] = self.__bias[0] + error * alpha
+
 
         return self.activation(net)
         
