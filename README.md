@@ -1,5 +1,6 @@
 # Practica 03
 
+Adaline como filtro adaptativo.
 
 
 ## Descarga del proyecto
